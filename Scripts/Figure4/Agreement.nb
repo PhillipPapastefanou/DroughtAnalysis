@@ -1,0 +1,1702 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     56109,       1693]
+NotebookOptionsPosition[     53966,       1618]
+NotebookOutlinePosition[     54343,       1634]
+CellTagsIndexPosition[     54300,       1631]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"SetDirectory", "[", 
+  RowBox[{"NotebookDirectory", "[", "]"}], "]"}]], "Input"],
+
+Cell[BoxData["\<\"F:\\\\Dropbox\\\\UNI\\\\Projekte\\\\A02_MCWD_Dataset_\
+Analysis\\\\2021\\\\Analysis\\\\Figure4\"\>"], "Output",
+ CellChangeTimes->{3.837533494747818*^9, 3.8375348065964327`*^9, 
+  3.838873646598166*^9, 3.838873829492236*^9, 3.8388925079512024`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.8375343435606956`*^9, 3.8375343441956863`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataAgree", "=", 
+   RowBox[{"Import", "[", "\"\<AgreementMetricSevere.tsv\>\"", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.837533506855398*^9, 3.837533512179328*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"years", " ", "=", " ", 
+  RowBox[{"DeleteDuplicates", "[", 
+   RowBox[{"Rest", "[", 
+    RowBox[{"dataAgree", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "3"}], "]"}], "]"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.837534345768304*^9, 3.837534357892305*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]], "Output",
+ CellChangeTimes->{3.837534358159382*^9, 3.8375348078794746`*^9, 
+  3.838873648249589*^9, 3.838873909259159*^9, 3.838892519825358*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"scens16", " ", "=", " ", 
+  RowBox[{"DeleteDuplicates", "[", 
+   RowBox[{"Rest", "[", 
+    RowBox[{"dataAgree", "[", 
+     RowBox[{"[", 
+      RowBox[{"All", ",", "4"}], "]"}], "]"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.8375343011727304`*^9, 3.837534308173021*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"CHIRPS\"\>", ",", "\<\"CRU NCEP\"\>", ",", "\<\"ERA 5\"\>", 
+   ",", "\<\"GLDAS\"\>", ",", "\<\"TRMM 7\"\>", ",", "\<\"GPCC\"\>"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.8375342984463*^9, 3.8375343086594543`*^9}, 
+   3.837534808479749*^9, 3.8388736488668847`*^9, 3.8388738321618376`*^9, {
+   3.838873885104993*^9, 3.8388739104197493`*^9}, 3.8388925205148015`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"agreeData", "[", 
+      RowBox[{"year", ",", " ", "metric"}], "]"}], " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Partition", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Select", "[", 
+          RowBox[{"dataAgree", ",", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "year"}], ")"}], "&&", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{"#", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "metric"}], 
+              ")"}]}], "&"}]}], "]"}], "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "7"}], "]"}], "]"}], ",", "6"}], "]"}], "*", 
+      "100"}]}], ";"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"year", ",", 
+     RowBox[{"{", 
+      RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"metric", ",", 
+     RowBox[{"{", 
+      RowBox[{"\"\<rscPDSI\>\"", ",", "\"\<rRAI\>\""}], "}"}]}], "}"}]}], " ",
+   "]"}]], "Input",
+ CellChangeTimes->{{3.8375335212109013`*^9, 3.8375335514609475`*^9}, {
+  3.8375335836119347`*^9, 3.8375337011394277`*^9}, {3.8375337366608176`*^9, 
+  3.8375338577720656`*^9}, {3.8375342286613626`*^9, 3.837534250932136*^9}, {
+  3.837534629892312*^9, 3.837534633300355*^9}, {3.838873845597335*^9, 
+  3.838873847877357*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"Null", ",", "Null"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Null", ",", "Null"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"Null", ",", "Null"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.8375335239693384`*^9, 3.837533552063347*^9}, {
+   3.837533585286371*^9, 3.83753370164154*^9}, {3.8375337396256924`*^9, 
+   3.8375337784980516`*^9}, {3.8375338256973257`*^9, 
+   3.8375338586276903`*^9}, {3.83753422926231*^9, 3.837534251502697*^9}, {
+   3.837534593101779*^9, 3.8375345940493655`*^9}, 3.8375346359133024`*^9, 
+   3.8375348092086754`*^9, 3.837534946177436*^9, 3.8388736502510085`*^9, {
+   3.8388738329503202`*^9, 3.8388739112442317`*^9}, 3.8389055495068645`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{"agreeData", "[", 
+          RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", ",", 
+         "0.1"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"year", ",", 
+         RowBox[{"{", 
+          RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"metric", ",", 
+         RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+     "2"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.837534198355651*^9, 3.837534203027815*^9}, {
+   3.837534235196651*^9, 3.8375343890283203`*^9}, {3.8375783271371098`*^9, 
+   3.837578475265174*^9}, {3.838873671079937*^9, 3.8388736773235373`*^9}, {
+   3.838873836576278*^9, 3.8388738402613144`*^9}, 3.8388738921337996`*^9, 
+   3.838873927357826*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "1.3`", "0.9`", "0.7000000000000001`", 
+      "0.7000000000000001`", "3.1`", "5.5`"},
+     {
+      TagBox["2010",
+       HoldForm], "2.2`", "0.9`", "1.2000000000000002`", "1.6`", 
+      "2.3000000000000003`", "1.3`"},
+     {
+      TagBox["2016",
+       HoldForm], "11.3`", "14.100000000000001`", "11.200000000000001`", 
+      "39.300000000000004`", "15.8`", "14.600000000000001`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{{3.837578375365205*^9, 3.8375784455739822`*^9}, 
+   3.8375784757742167`*^9, {3.8388736718204174`*^9, 3.8388736799945602`*^9}, {
+   3.838873834584405*^9, 3.838873927847069*^9}, 3.8389055502135096`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", "/", 
+           "100"}], "*", "5.94"}], ",", "0.1"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"year", ",", 
+         RowBox[{"{", 
+          RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"metric", ",", 
+         RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+     "2"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{
+  3.837578484073866*^9, {3.8388739156155376`*^9, 3.8388739172451954`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "0.1`", "0.1`", "0.`", "0.`", "0.2`", 
+      "0.30000000000000004`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.1`", "0.1`", "0.1`", "0.1`", "0.1`", "0.1`"},
+     {
+      TagBox["2016",
+       HoldForm], "0.7000000000000001`", "0.8`", "0.7000000000000001`", 
+      "2.3000000000000003`", "0.9`", "0.9`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{
+  3.837578484802318*^9, {3.838873651900406*^9, 3.8388736548139763`*^9}, {
+   3.838873914163612*^9, 3.8388739179578767`*^9}, 3.8389055512447596`*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{3.8375784826748486`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Round", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"agreeData", "[", 
+          RowBox[{"year", ",", " ", "\"\<rRAI\>\""}], "]"}], " ", ",", 
+         RowBox[{"{", 
+          RowBox[{"year", ",", 
+           RowBox[{"{", 
+            RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"metric", ",", 
+           RowBox[{"{", "\"\<aRAI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+       "2"}], "]"}], ",", ".1"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8375345743154073`*^9, 3.8375345829005365`*^9}, 
+   3.838873975397421*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "5.`", "4.`", "3.4000000000000004`", "5.1000000000000005`", 
+      "5.7`", "6.5`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.9`", "3.4000000000000004`", "7.1000000000000005`", 
+      "4.5`", "5.5`", "4.1000000000000005`"},
+     {
+      TagBox["2016",
+       HoldForm], "0.`", "0.`", "0.`", "13.4`", "0.1`", "0.1`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{{3.8375345756376357`*^9, 3.837534583508362*^9}, 
+   3.837534638337467*^9, 3.837534815317587*^9, {3.8375349496949425`*^9, 
+   3.8375349731106853`*^9}, 3.83887397933076*^9, {3.8389055396590233`*^9, 
+   3.838905552284718*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Round", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rRAI\>\""}], "]"}], " ", "/", 
+           "100"}], "*", "5.94"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"year", ",", 
+           RowBox[{"{", 
+            RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"metric", ",", 
+           RowBox[{"{", "\"\<aRAI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+       "2"}], "]"}], ",", ".1"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.8375785325628567`*^9, 3.8375785363773875`*^9}, 
+   3.838873976701605*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "0.30000000000000004`", "0.2`", "0.2`", 
+      "0.30000000000000004`", "0.30000000000000004`", "0.4`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.1`", "0.2`", "0.4`", "0.30000000000000004`", 
+      "0.30000000000000004`", "0.2`"},
+     {
+      TagBox["2016",
+       HoldForm], "0.`", "0.`", "0.`", "0.8`", "0.`", "0.`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{{3.8375785259025354`*^9, 3.8375785380082564`*^9}, 
+   3.838873978449969*^9, {3.838905542291913*^9, 3.8389055539499907`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataAgree", "=", 
+   RowBox[{"Import", "[", "\"\<AgreementMetricModerate.tsv\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"agreeData", "[", 
+       RowBox[{"year", ",", " ", "metric"}], "]"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Select", "[", 
+           RowBox[{"dataAgree", ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "year"}], ")"}], 
+              "&&", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "metric"}], 
+               ")"}]}], "&"}]}], "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "7"}], "]"}], "]"}], ",", "6"}], "]"}], "*", 
+       "100"}]}], ";"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"year", ",", 
+      RowBox[{"{", 
+       RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"metric", ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<rscPDSI\>\"", ",", "\"\<rRAI\>\""}], "}"}]}], "}"}]}], 
+   " ", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{"agreeData", "[", 
+          RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", ",", 
+         "0.1"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"year", ",", 
+         RowBox[{"{", 
+          RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"metric", ",", 
+         RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+     "2"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", "/", 
+           "100"}], "*", "5.94"}], ",", "0.1"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"year", ",", 
+         RowBox[{"{", 
+          RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"metric", ",", 
+         RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+     "2"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.838874491926855*^9, 3.838874521726184*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "65.5`", "46.5`", "70.9`", "69.`", "60.`", 
+      "51.800000000000004`"},
+     {
+      TagBox["2010",
+       HoldForm], "68.3`", "54.300000000000004`", "72.5`", 
+      "68.60000000000001`", "62.900000000000006`", "58.800000000000004`"},
+     {
+      TagBox["2016",
+       HoldForm], "61.2`", "72.`", "47.`", "72.5`", "77.7`", "62.5`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{{3.8388744943677645`*^9, 3.8388745222438087`*^9}, 
+   3.8388749984262*^9, {3.8388925156530976`*^9, 3.8388925219451694`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "3.9000000000000004`", "2.8000000000000003`", "4.2`", 
+      "4.1000000000000005`", "3.6`", "3.1`"},
+     {
+      TagBox["2010",
+       HoldForm], "4.1000000000000005`", "3.2`", "4.3`", 
+      "4.1000000000000005`", "3.7`", "3.5`"},
+     {
+      TagBox["2016",
+       HoldForm], "3.6`", "4.3`", "2.8000000000000003`", "4.3`", 
+      "4.6000000000000005`", "3.7`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{{3.8388744943677645`*^9, 3.8388745222438087`*^9}, 
+   3.8388749984262*^9, {3.8388925156530976`*^9, 3.838892521948172*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataAgree", "=", 
+   RowBox[{"Import", "[", "\"\<AgreementMetricSevere.tsv\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"agreeData", "[", 
+       RowBox[{"year", ",", " ", "metric"}], "]"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Select", "[", 
+           RowBox[{"dataAgree", ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "year"}], ")"}], 
+              "&&", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "metric"}], 
+               ")"}]}], "&"}]}], "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "7"}], "]"}], "]"}], ",", "6"}], "]"}], "*", 
+       "100"}]}], ";"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"year", ",", 
+      RowBox[{"{", 
+       RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"metric", ",", 
+      RowBox[{"{", 
+       RowBox[{
+       "\"\<rscPDSI\>\"", ",", "\"\<rRAI\>\"", ",", " ", "\"\<rMCWD\>\""}], 
+       "}"}]}], "}"}]}], " ", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{"agreeData", "[", 
+          RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", ",", 
+         "0.1"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"year", ",", 
+         RowBox[{"{", 
+          RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"metric", ",", 
+         RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+     "2"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", "/", 
+           "100"}], "*", "5.94"}], ",", "0.1"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"year", ",", 
+         RowBox[{"{", 
+          RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"metric", ",", 
+         RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+     "2"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.838892543770135*^9, 3.8388925464499884`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "1.3`", "0.9`", "0.7000000000000001`", 
+      "0.7000000000000001`", "3.1`", "5.5`"},
+     {
+      TagBox["2010",
+       HoldForm], "2.2`", "0.9`", "1.2000000000000002`", "1.6`", 
+      "2.3000000000000003`", "1.3`"},
+     {
+      TagBox["2016",
+       HoldForm], "11.3`", "14.100000000000001`", "11.200000000000001`", 
+      "39.300000000000004`", "15.8`", "14.600000000000001`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{
+  3.8388745274693885`*^9, 3.838875002303934*^9, {3.838892517313616*^9, 
+   3.8388925466869802`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "0.1`", "0.1`", "0.`", "0.`", "0.2`", 
+      "0.30000000000000004`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.1`", "0.1`", "0.1`", "0.1`", "0.1`", "0.1`"},
+     {
+      TagBox["2016",
+       HoldForm], "0.7000000000000001`", "0.8`", "0.7000000000000001`", 
+      "2.3000000000000003`", "0.9`", "0.9`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{
+  3.8388745274693885`*^9, 3.838875002303934*^9, {3.838892517313616*^9, 
+   3.838892546689982*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"dataAgree", "=", 
+   RowBox[{"Import", "[", "\"\<AgreementMetricExtreme.tsv\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"agreeData", "[", 
+       RowBox[{"year", ",", " ", "metric"}], "]"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{"Partition", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"Select", "[", 
+           RowBox[{"dataAgree", ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "year"}], ")"}], 
+              "&&", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "metric"}], 
+               ")"}]}], "&"}]}], "]"}], "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "7"}], "]"}], "]"}], ",", "6"}], "]"}], "*", 
+       "100"}]}], ";"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"year", ",", 
+      RowBox[{"{", 
+       RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"metric", ",", 
+      RowBox[{"{", 
+       RowBox[{"\"\<rscPDSI\>\"", ",", "\"\<rRAI\>\""}], "}"}]}], "}"}]}], 
+   " ", "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{"agreeData", "[", 
+          RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", ",", 
+         "0.1"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"year", ",", 
+         RowBox[{"{", 
+          RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"metric", ",", 
+         RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+     "2"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"TableForm", "[", 
+  RowBox[{
+   RowBox[{"Flatten", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"Round", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", "/", 
+           "100"}], "*", "5.94"}], ",", "0.1"}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"year", ",", 
+         RowBox[{"{", 
+          RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"metric", ",", 
+         RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+     "2"}], "]"}], ",", " ", 
+   RowBox[{"TableHeadings", "\[Rule]", 
+    RowBox[{"{", " ", 
+     RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8388745316459956`*^9, 3.8388745338376875`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "1.7000000000000002`", "0.1`", "0.`", "0.`", "0.`", "0.`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.2`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {
+      TagBox["2016",
+       HoldForm], "18.1`", "1.8`", "0.9`", "0.2`", "0.`", "0.`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{3.838874534169485*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "0.1`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.`", "0.`", "0.`", "0.`", "0.`", "0.`"},
+     {
+      TagBox["2016",
+       HoldForm], "1.1`", "0.1`", "0.1`", "0.`", "0.`", "0.`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{3.8388745341714907`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"dataAgree", "=", 
+     RowBox[{"Import", "[", "\"\<AgreementMetricSevere.tsv\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"agreeData", "[", 
+         RowBox[{"year", ",", " ", "metric"}], "]"}], " ", "=", " ", 
+        RowBox[{
+         RowBox[{"Partition", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Select", "[", 
+             RowBox[{"dataAgree", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "year"}], 
+                 ")"}], "&&", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "metric"}], 
+                 ")"}]}], "&"}]}], "]"}], "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "7"}], "]"}], "]"}], ",", "6"}], "]"}], "*", 
+         "100"}]}], ";"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"year", ",", 
+        RowBox[{"{", 
+         RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"metric", ",", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<rscPDSI\>\"", ",", "\"\<rRAI\>\"", ",", " ", "\"\<rMCWD\>\""}], 
+         "}"}]}], "}"}]}], " ", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", ",", 
+           "0.1"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"year", ",", 
+           RowBox[{"{", 
+            RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"metric", ",", 
+           RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+       "2"}], "]"}], ",", " ", 
+     RowBox[{"TableHeadings", "\[Rule]", 
+      RowBox[{"{", " ", 
+       RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rRAI\>\""}], "]"}], " ", ",", 
+           "0.1"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"year", ",", 
+           RowBox[{"{", 
+            RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"metric", ",", 
+           RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+       "2"}], "]"}], ",", " ", 
+     RowBox[{"TableHeadings", "\[Rule]", 
+      RowBox[{"{", " ", 
+       RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rMCWD\>\""}], "]"}], " ", ",", 
+           "0.1"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"year", ",", 
+           RowBox[{"{", 
+            RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"metric", ",", 
+           RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+       "2"}], "]"}], ",", " ", 
+     RowBox[{"TableHeadings", "\[Rule]", 
+      RowBox[{"{", " ", 
+       RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.83889255428001*^9, 3.8388925740659833`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "1.3`", "0.9`", "0.7000000000000001`", 
+      "0.7000000000000001`", "3.1`", "5.5`"},
+     {
+      TagBox["2010",
+       HoldForm], "2.2`", "0.9`", "1.2000000000000002`", "1.6`", 
+      "2.3000000000000003`", "1.3`"},
+     {
+      TagBox["2016",
+       HoldForm], "11.3`", "14.100000000000001`", "11.200000000000001`", 
+      "39.300000000000004`", "15.8`", "14.600000000000001`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{{3.8388925550651617`*^9, 3.838892575098013*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "5.`", "4.`", "3.4000000000000004`", "5.1000000000000005`", 
+      "5.7`", "6.5`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.9`", "3.4000000000000004`", "7.1000000000000005`", 
+      "4.5`", "5.5`", "4.1000000000000005`"},
+     {
+      TagBox["2016",
+       HoldForm], "0.`", "0.`", "0.`", "13.4`", "0.1`", "0.1`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{{3.8388925550651617`*^9, 3.8388925751010165`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "8.3`", "12.`", "3.5`", "9.1`", "8.9`", 
+      "10.600000000000001`"},
+     {
+      TagBox["2010",
+       HoldForm], "11.8`", "6.5`", "18.3`", "11.3`", "11.700000000000001`", 
+      "10.700000000000001`"},
+     {
+      TagBox["2016",
+       HoldForm], "13.8`", "10.4`", "17.6`", "21.200000000000003`", "13.8`", 
+      "12.5`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{{3.8388925550651617`*^9, 3.838892575103018*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"dataAgree", "=", 
+     RowBox[{"Import", "[", "\"\<AgreementMetricExtreme.tsv\>\"", "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{"agreeData", "[", 
+         RowBox[{"year", ",", " ", "metric"}], "]"}], " ", "=", " ", 
+        RowBox[{
+         RowBox[{"Partition", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Select", "[", 
+             RowBox[{"dataAgree", ",", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "3", "]"}], "]"}], "\[Equal]", "year"}], 
+                 ")"}], "&&", 
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "metric"}], 
+                 ")"}]}], "&"}]}], "]"}], "[", 
+            RowBox[{"[", 
+             RowBox[{"All", ",", "7"}], "]"}], "]"}], ",", "6"}], "]"}], "*", 
+         "100"}]}], ";"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"year", ",", 
+        RowBox[{"{", 
+         RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"metric", ",", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<rscPDSI\>\"", ",", "\"\<rRAI\>\"", ",", " ", "\"\<rMCWD\>\""}], 
+         "}"}]}], "}"}]}], " ", "]"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rscPDSI\>\""}], "]"}], " ", ",", 
+           "0.1"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"year", ",", 
+           RowBox[{"{", 
+            RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"metric", ",", 
+           RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+       "2"}], "]"}], ",", " ", 
+     RowBox[{"TableHeadings", "\[Rule]", 
+      RowBox[{"{", " ", 
+       RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rRAI\>\""}], "]"}], " ", ",", 
+           "0.1"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"year", ",", 
+           RowBox[{"{", 
+            RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"metric", ",", 
+           RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+       "2"}], "]"}], ",", " ", 
+     RowBox[{"TableHeadings", "\[Rule]", 
+      RowBox[{"{", " ", 
+       RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"TableForm", "[", 
+    RowBox[{
+     RowBox[{"Flatten", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{
+         RowBox[{"Round", "[", 
+          RowBox[{
+           RowBox[{"agreeData", "[", 
+            RowBox[{"year", ",", " ", "\"\<rMCWD\>\""}], "]"}], " ", ",", 
+           "0.1"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"year", ",", 
+           RowBox[{"{", 
+            RowBox[{"2005", ",", "2010", ",", "2016"}], "}"}]}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"metric", ",", 
+           RowBox[{"{", "\"\<ascPDSI\>\"", "}"}]}], "}"}]}], " ", "]"}], ",", 
+       "2"}], "]"}], ",", " ", 
+     RowBox[{"TableHeadings", "\[Rule]", 
+      RowBox[{"{", " ", 
+       RowBox[{"years", ",", "scens16"}], "}"}]}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.8388926215364447`*^9, 3.8388926273141212`*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "0.`", "0.`", "0.1`", "0.`", "0.5`", "1.2000000000000002`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.1`", "0.1`", "0.`", "0.`", "0.`", "0.1`"},
+     {
+      TagBox["2016",
+       HoldForm], "1.1`", "2.`", "1.1`", "13.700000000000001`", "1.6`", 
+      "5.6000000000000005`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{3.8388926278369017`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "0.2`", "0.4`", "0.30000000000000004`", "0.`", 
+      "0.6000000000000001`", "2.6`"},
+     {
+      TagBox["2010",
+       HoldForm], "0.`", "0.`", "0.9`", "0.30000000000000004`", 
+      "1.2000000000000002`", "1.3`"},
+     {
+      TagBox["2016",
+       HoldForm], "0.`", "0.`", "0.`", "4.2`", "0.`", "0.`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{3.8388926278379025`*^9}],
+
+Cell[BoxData[
+ TagBox[
+  TagBox[GridBox[{
+     {
+      StyleBox["\[Null]",
+       ShowStringCharacters->False], 
+      TagBox["\<\"CHIRPS\"\>",
+       HoldForm], 
+      TagBox["\<\"CRU NCEP\"\>",
+       HoldForm], 
+      TagBox["\<\"ERA 5\"\>",
+       HoldForm], 
+      TagBox["\<\"GLDAS\"\>",
+       HoldForm], 
+      TagBox["\<\"TRMM 7\"\>",
+       HoldForm], 
+      TagBox["\<\"GPCC\"\>",
+       HoldForm]},
+     {
+      TagBox["2005",
+       HoldForm], "2.7`", "5.`", "1.`", "1.8`", "3.7`", "4.4`"},
+     {
+      TagBox["2010",
+       HoldForm], "3.1`", "1.7000000000000002`", "4.2`", "1.5`", 
+      "4.800000000000001`", "4.3`"},
+     {
+      TagBox["2016",
+       HoldForm], "6.7`", "4.2`", "9.600000000000001`", "12.600000000000001`",
+       "7.800000000000001`", "7.6000000000000005`"}
+    },
+    GridBoxAlignment->{
+     "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+      "RowsIndexed" -> {}},
+    GridBoxDividers->{
+     "Columns" -> {False, True, {False}, False}, "ColumnsIndexed" -> {}, 
+      "Rows" -> {False, True, {False}, False}, "RowsIndexed" -> {}},
+    GridBoxSpacings->{"Columns" -> {
+        Offset[0.27999999999999997`], {
+         Offset[2.0999999999999996`]}, 
+        Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+        Offset[0.2], {
+         Offset[0.4]}, 
+        Offset[0.2]}, "RowsIndexed" -> {}}],
+   {OutputFormsDump`HeadedRows, OutputFormsDump`HeadedColumns}],
+  Function[BoxForm`e$, 
+   TableForm[
+   BoxForm`e$, 
+    TableHeadings -> {{2005, 2010, 2016}, {
+      "CHIRPS", "CRU NCEP", "ERA 5", "GLDAS", "TRMM 7", "GPCC"}}]]]], "Output",
+ CellChangeTimes->{3.838892627838903*^9}]
+}, Open  ]]
+},
+WindowSize->{1920, 997},
+WindowMargins->{{Automatic, -2440}, {-284, Automatic}},
+Magnification:>1.5 Inherited,
+FrontEndVersion->"10.2 for Microsoft Windows (64-bit) (July 7, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 104, 2, 45, "Input"],
+Cell[687, 26, 266, 3, 44, "Output"]
+}, Open  ]],
+Cell[968, 32, 96, 1, 45, "Input"],
+Cell[1067, 35, 210, 5, 45, "Input"],
+Cell[CellGroupData[{
+Cell[1302, 44, 297, 7, 45, "Input"],
+Cell[1602, 53, 227, 4, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1866, 62, 301, 7, 45, "Input"],
+Cell[2170, 71, 412, 7, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2619, 83, 1481, 40, 75, "Input"],
+Cell[4103, 125, 746, 15, 44, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4886, 145, 1086, 27, 75, "Input"],
+Cell[5975, 174, 1886, 52, 140, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[7898, 231, 933, 26, 75, "Input"],
+Cell[8834, 259, 1765, 51, 140, "Output"]
+}, Open  ]],
+Cell[10614, 313, 70, 1, 45, "Input"],
+Cell[CellGroupData[{
+Cell[10709, 318, 861, 23, 75, "Input"],
+Cell[11573, 343, 1851, 52, 140, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13461, 400, 943, 26, 75, "Input"],
+Cell[14407, 428, 1756, 50, 139, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[16200, 483, 3076, 90, 249, "Input"],
+Cell[19279, 575, 1764, 50, 140, "Output"],
+Cell[21046, 627, 1791, 51, 140, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22874, 683, 3089, 90, 220, "Input"],
+Cell[25966, 775, 1787, 52, 140, "Output"],
+Cell[27756, 829, 1715, 51, 140, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29508, 885, 3053, 89, 220, "Input"],
+Cell[32564, 976, 1570, 47, 121, "Output"],
+Cell[34137, 1025, 1553, 47, 121, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[35727, 1077, 4092, 113, 365, "Input"],
+Cell[39822, 1192, 1734, 50, 140, "Output"],
+Cell[41559, 1244, 1678, 49, 140, "Output"],
+Cell[43240, 1295, 1680, 50, 140, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44957, 1350, 4073, 113, 336, "Input"],
+Cell[49033, 1465, 1612, 48, 140, "Output"],
+Cell[50648, 1515, 1635, 49, 139, "Output"],
+Cell[52286, 1566, 1664, 49, 140, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
